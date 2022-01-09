@@ -31,7 +31,7 @@ async function getPage1() {
                     totalTime: ''
                 }
 
-            }
+            },
             data: body.data
         }
 
