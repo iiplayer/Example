@@ -1,6 +1,7 @@
 'use strict'
 
 async function iPlayerMain(number) {
+    console.log('=======开始======')
     if (number == 1) {
         getPage1()
     }
@@ -13,7 +14,9 @@ async function getPage1() {
         timeout : 16
     }
     $httpClient.get(options, function(err, res, body){
-        console.log(body)
+        console.log(err)
+        console.log(res.status)
+        console.log(JSON.stringify(body))
         let data = {
             title: '平台列表',
             canPlay: false,
