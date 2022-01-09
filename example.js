@@ -41,9 +41,9 @@ async function getPage1() {
     })
 }
 
-async function getPage2(index) {
+async function getPage2(item) {
 
-    let subData = page1Data[index]
+    let subData = page1Data[item]
     let param = {name: subData['dz']};
     let options = {
         url : "http://api.hclyz.com:81/mf/jiekou.php",
