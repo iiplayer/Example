@@ -6,8 +6,10 @@ async function iPlayerMain(number, index) {
     console.log('=======开始======')
     console.log(`${number}<<<>>>>${index}`)
     if (number == 1) {
+        console.log('=======开始1======')
         getPage1()
     }else if (number == 2) {
+        console.log('=======开始2======')
         getPage2(index)
     }
 }
