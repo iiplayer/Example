@@ -3,10 +3,7 @@
 let page1Data = []
 
 async function iPlayerMain(number, index) {
-    console.log('=======开始======')
-    console.log(`${number}<<<>>>>${index}`)
     if (number == 1) {
-        console.log('=======开始1======')
         getPage1()
     }else if (number == 2) {
         getPage2(index)
@@ -42,20 +39,18 @@ async function getPage1() {
     })
 }
 
-async function getPage2(item) {
-    console.log('=======开始2======')
-    console.log(page1Data)
-    let subData = page1Data[item]
+async function getPage2(index) {
+
+    let subData = page1Data[index]
     let param = {name: subData['dz']};
     let options = {
         url : "http://api.hclyz.com:81/mf/jiekou.php",
         body : param,
         timeout : 16
     }
-    console.log(options)
     $httpClient.get(options, function(err, res, body){
         let data = {
-            title: subData['dz'],
+            title: subData['name'],
             canPlay: true,
             config:{       
                 key: {
