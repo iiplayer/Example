@@ -54,13 +54,9 @@ async function getPage2(index) {
             canPlay: true,
             config:{       
                 key: {
-                    name: 'name',
-                    plat: 'name',
+                    name: 'title',
                     image:'img',
-                    address: 'dz',
-                    online: 'sl',
-                    time: '',
-                    totalTime: ''
+                    address: 'address'
                 }
 
             },
