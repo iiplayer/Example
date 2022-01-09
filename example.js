@@ -14,9 +14,6 @@ async function getPage1() {
         timeout : 16
     }
     $httpClient.get(options, function(err, res, body){
-        console.log(err)
-        console.log(res.status)
-        console.log(JSON.stringify(body))
         let data = {
             title: '平台列表',
             canPlay: false,
