@@ -9,7 +9,6 @@ async function iPlayerMain(number, index) {
         console.log('=======开始1======')
         getPage1()
     }else if (number == 2) {
-        console.log('=======开始2======')
         getPage2(index)
     }
 }
@@ -44,7 +43,8 @@ async function getPage1() {
 }
 
 async function getPage2(item) {
-
+    console.log('=======开始2======')
+    console.log(page1Data)
     let subData = page1Data[item]
     let param = {name: subData['dz']};
     let options = {
