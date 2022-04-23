@@ -15,7 +15,7 @@ async function getPage1() {
         url : "http://api.hclyz.com:81/mf/jiekou.php",
         timeout : 16
     }
-    $httpClient.get(options, function(err, res, body){
+    iNetwork.get(options, function(err, res, body){
         page1Data = body.data
         let data = {
             title: '平台列表',
@@ -35,7 +35,7 @@ async function getPage1() {
             data: body.data
         }
 
-        $UI.reloadData(data)
+        iUI.reloadData(data)
     })
 }
 
@@ -48,7 +48,7 @@ async function getPage2(index) {
         body : param,
         timeout : 16
     }
-    $httpClient.get(options, function(err, res, body){
+    iNetwork.get(options, function(err, res, body){
         let data = {
             title: subData['name'],
             canPlay: true,
@@ -63,6 +63,6 @@ async function getPage2(index) {
             data: body.data
         }
 
-        $UI.reloadData(data)
+        iUI.reloadData(data)
     })
 }
