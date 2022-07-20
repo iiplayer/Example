@@ -17,6 +17,7 @@ async function iPlayerMain(number, index, page) {
         title: "EXAMPLE", 
         //若为true，则跳转播放器播放
         canPlay: true, 
+        //列表内容
         data: [{
             name: "example",
             plat: "m3u8",
