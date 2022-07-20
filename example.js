@@ -5,36 +5,40 @@
 'use script'
 
 async function iPlayerMain(number, index, page) {
-    //App版本号
-    console.log("App版本号:", iUI.appVersion())
-    
-    //等待样式HUD
-    iUI.showHUD('wait', '加载中...')
-    
-    await wait(3000) //等待3秒
-    
-    let times = new Date()
-    let data = {
-        //页面导航栏标题
-        title: "EXAMPLE",
-        //若为true，则跳转播放器播放
-        canPlay: true,
-        //列表数据
-        data: [{
-            name: "example",
-            plat: "m3u8",
-            address: "http://stream1.jlntv.cn/xcpd/sd/live.m3u8",
-            time: times.toLocaleDateString()
-        }]
+    try {
+        //App版本号
+        console.log("App版本号:", iUI.appVersion())
+        
+        //等待样式HUD
+        iUI.showHUD('wait', '加载中...')
+        
+        await wait(3000) //等待3秒
+        
+        let times = new Date()
+        let data = {
+            //页面导航栏标题
+            title: "EXAMPLE",
+            //若为true，则跳转播放器播放
+            canPlay: true,
+            //列表数据
+            data: [{
+                name: "example",
+                plat: "m3u8",
+                address: "http://stream1.jlntv.cn/xcpd/sd/live.m3u8",
+                time: times.toLocaleDateString()
+            }]
+        }
+        
+        console.log(`numben(页面)：${number}; index(选择项)：${index}; page(页码)：${page}`)
+        console.log(JSON.stringify(data))
+        
+        iUI.clearAllHUD()//移除HUD
+        iUI.reloadData(data)//刷新页面
+        
+        iNotify.notify("iPlayer", "获取数据成功", "▶点击播放", {"open-url": data.data[0].address, "media-url":'https://s3.bmp.ovh/imgs/2022/06/03/b00eeb1ee998105e.png'})
+    } catch(err) {
+        console.log(err)
     }
-    
-    console.log(`numben(页面)：${number}; index(选择项)：${index}; page(页码)：${page}`)
-    console.log(JSON.stringify(data))
-    
-    iUI.clearAllHUD()//移除HUD
-    iUI.reloadData(data)//刷新页面
-    
-    iNotify.notify("iPlayer", "获取数据成功", "▶点击播放", {"open-url": data.data[0].address, "media-url":'https://s3.bmp.ovh/imgs/2022/06/03/b00eeb1ee998105e.png'})
 }
 
 async function wait(t) {
