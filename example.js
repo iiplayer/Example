@@ -2,9 +2,12 @@
 //example.js
 //iPlayer
 
-'use strict'
+'use script'
 
 async function iPlayerMain(number, index, page) {
+    iUI.showHUD('wait', '请稍等')//等待样式HUD
+    await wait(3)
+    
     var times = new Date();
     let data = {
         title: "EXAMPLE", //页面导航栏标题
@@ -16,9 +19,18 @@ async function iPlayerMain(number, index, page) {
             time: times.toLocaleDateString()
         }]
     }
+    
     console.log(`numben(页面)：${number}; index(选择项)：${index}; page(页码)：${page}`)
     console.log(JSON.stringify(data))
+    
+    iUI.clearAllHUD()//移除HUD
     iUI.reloadData(data)//刷新页面
+    
+    iNotify.notify("iPlayer", "🎉获取数据成功", "▶️点击播放", {"open-url": data.data[0].address, "media-url":'https://s3.bmp.ovh/imgs/2022/06/03/b00eeb1ee998105e.png'})
+}
+
+async function wait(t) {
+    return new Promise(e => setTimeout(e, t))
 }
 
 /*
@@ -50,10 +62,6 @@ async function iPlayerMain(number, index, page) {
          console.log(JSON.stringify(body))
      })
  }
- //数据存取
- iData.write("value", "key")
- iData.read("key")
- 
  //本地推送
  iNotify.notify("Title", "subtitle", "detail", {"open-url": 'https://www.baidu.com', "media-url":'https://s3.bmp.ovh/imgs/2022/06/03/b00eeb1ee998105e.png'})
  
@@ -64,8 +72,5 @@ async function iPlayerMain(number, index, page) {
  iUI.showHUD('info', '显示信息')
  //清除HUD
  iUI.clearAllHUD()
- 
- //版本号
- iUI.appVersion()
  
  */
