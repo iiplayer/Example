@@ -5,6 +5,8 @@
 'use script'
 
 async function iPlayerMain(number, index, page) {
+    //App版本号
+    console.log("App版本号:", iUI.appVersion())
     
     //等待样式HUD
     iUI.showHUD('wait', '加载中...')
@@ -14,10 +16,9 @@ async function iPlayerMain(number, index, page) {
     var times = new Date();
     let data = {
         //页面导航栏标题
-        title: "EXAMPLE", 
+        title: "EXAMPLE",
         //若为true，则跳转播放器播放
-        canPlay: true, 
-        //列表内容
+        canPlay: true,
         data: [{
             name: "example",
             plat: "m3u8",
@@ -78,5 +79,8 @@ async function wait(t) {
  iUI.showHUD('info', '显示信息')
  //清除HUD
  iUI.clearAllHUD()
+ 
+ //获取版本号
+ iUI.appVersion()
  
  */
