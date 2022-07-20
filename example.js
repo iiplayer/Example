@@ -26,7 +26,7 @@ async function iPlayerMain(number, index, page) {
     iUI.clearAllHUD()//移除HUD
     iUI.reloadData(data)//刷新页面
     
-    iNotify.notify("iPlayer", "🎉获取数据成功", "▶️点击播放", {"open-url": data.data[0].address, "media-url":'https://s3.bmp.ovh/imgs/2022/06/03/b00eeb1ee998105e.png'})
+    iNotify.notify("iPlayer", "获取数据成功", "▶点击播放", {"open-url": data.data[0].address, "media-url":'https://s3.bmp.ovh/imgs/2022/06/03/b00eeb1ee998105e.png'})
 }
 
 async function wait(t) {
