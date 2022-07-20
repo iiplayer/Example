@@ -13,6 +13,7 @@ async function iPlayerMain(number, index, page) {
     
     await wait(3000) //等待3秒
     
+    let times = new Date()
     let data = {
         //页面导航栏标题
         title: "EXAMPLE",
@@ -23,7 +24,7 @@ async function iPlayerMain(number, index, page) {
             name: "example",
             plat: "m3u8",
             address: "http://stream1.jlntv.cn/xcpd/sd/live.m3u8",
-            time: Date().toLocaleDateString()
+            time: times.toLocaleDateString()
         }]
     }
     
