@@ -6,7 +6,7 @@
 
 async function iPlayerMain(number, index, page) {
     iUI.showHUD('wait', '请稍等')//等待样式HUD
-    await wait(3)
+    await wait(3000) //等待3秒
     
     var times = new Date();
     let data = {
