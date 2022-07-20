@@ -5,13 +5,18 @@
 'use script'
 
 async function iPlayerMain(number, index, page) {
-    iUI.showHUD('wait', '加载中...')//等待样式HUD
+    
+    //等待样式HUD
+    iUI.showHUD('wait', '加载中...')
+    
     await wait(3000) //等待3秒
     
     var times = new Date();
     let data = {
-        title: "EXAMPLE", //页面导航栏标题
-        canPlay: true, //若为true，则跳转播放器播放
+        //页面导航栏标题
+        title: "EXAMPLE", 
+        //若为true，则跳转播放器播放
+        canPlay: true, 
         data: [{
             name: "example",
             plat: "m3u8",
