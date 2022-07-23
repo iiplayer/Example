@@ -54,7 +54,7 @@ async function wait(t) {
          url : "http://example.php",
          body : param, //可选值
          timeout : 16, //可选值，默认16s
-         useJSON : false //可选值，默认false。若设置为true，则将body转为json data
+         useJSON : false //(版本>=1.5.0已废弃)可选值，默认false。若设置为true，则将body转为json data
      }
      iNetwork.get(options, function(err, res, body){
          console.log(JSON.stringify(body))
@@ -85,7 +85,7 @@ async function wait(t) {
  //清除HUD
  iUI.clearAllHUD()
  
- //获取版本号
+ //获取版本号（版本>=1.5.0可用）
  iUI.appVersion()
  
  */
