@@ -57,6 +57,7 @@ async function wait(t) {
          useJSON : false //(版本>=1.5.0已废弃)可选值，默认false。若设置为true，则将body转为json data
      }
      iNetwork.get(options, function(err, res, body){
+         //body：版本>=1.5.0是字符串，低版本为object
          console.log(JSON.stringify(body))
      })
  }
@@ -71,6 +72,7 @@ async function wait(t) {
          useJSON : false //可选值，默认false。若设置为true，则将body转为json data
      }
      iNetwork.post(options, function(err, res, body){
+         //body：版本>=1.5.0是字符串，低版本为object
          console.log(JSON.stringify(body))
      })
  }
