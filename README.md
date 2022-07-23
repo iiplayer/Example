@@ -1,2 +1,2 @@
 # Example
-### js
+### JS脚本API示例
