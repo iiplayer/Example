@@ -1,4 +1,5 @@
 
+
 //example.js
 //iPlayer
 
@@ -7,7 +8,7 @@
 async function iPlayerMain(number, index, page) {
     try {
         //App版本号
-        console.log("App版本号:", iUI.appVersion())
+        console.log("App版本号:", version())
         
         //等待样式HUD
         iUI.showHUD('wait', '加载中...')
@@ -43,6 +44,14 @@ async function iPlayerMain(number, index, page) {
 
 async function wait(t) {
     return new Promise(e => setTimeout(e, t))
+}
+
+//版本号
+function version() {
+    try {
+        return iUI.appVersion()
+    }catch(e){}
+    return ''
 }
 
 /*
@@ -91,3 +100,4 @@ async function wait(t) {
  iUI.appVersion()
  
  */
+
