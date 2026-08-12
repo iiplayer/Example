@@ -50,7 +50,7 @@ async function iPlayerMain(number, index, page) {
         iUI.clearAllHUD(); // 移除HUD
         iUI.reloadData(data); // 刷新页面
         
-        iNotify.notify("iPlayer", "获取数据成功", "▶点击播放", {"open-url": data.data[0].address, "media-url":'https://gitee.com/iplayerstore/scripts/raw/master/icon.png'});
+        iNotify.notify("iPlayer", "获取数据成功", "▶点击播放", {"open-url": data.data[0].address, "media-url":'https://github.com/iiplayer/Example/blob/main/icon.png?raw=true'});
                 
     } catch(err) {
         iUI.clearAllHUD();
