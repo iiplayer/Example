@@ -1,7 +1,7 @@
 
 
 // example.js
-// iPlayer
+// iPlayer (Version >= 2.0.0)
 
 /**
  * 引擎入口主函数
