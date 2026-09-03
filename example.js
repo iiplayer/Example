@@ -1,6 +1,7 @@
 
 // example.js
 // https://raw.githubusercontent.com/iiplayer/Example/refs/heads/main/example.js
+// 如有问题请前往上面链接查看是否有更新
 // iPlayer (Version >= 2.0.0)
 
 /**
@@ -29,10 +30,16 @@ async function iPlayerMain(number, index, page) {
             mutableDuty: true,
             // 列表数据
             data: [{
-                name: "example",
-                plat: "m3u8",
-                address: "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_adv_example_hevc/master.m3u8",
-                time: times.toLocaleDateString(),
+                name: "example", // 名称
+                plat: "m3u8", // 平台
+                image: "https://github.com/iiplayer/Example/blob/main/icon.png?raw=true", // 封面
+                address: "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_adv_example_hevc/master.m3u8", //播放地址
+                time: times.toLocaleDateString(), // 添加时间
+                hot: "999", // 热度
+                type: "1", // 类型（1: 显示门票图标；2: 显示时钟图标）
+                typeInfo: "类型信息", // 显示在类型图标后面
+                typeImage: "https://github.com/iiplayer/Example/blob/main/icon.png?raw=true", // 自定义类型图标（优先级高于type，可以使用iOS系统图标直接填入图标名称字符串）
+                typeColor: "类型图片颜色", // 类型图标颜色
             },
             {
                 name: "alert example",
