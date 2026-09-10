@@ -22,13 +22,10 @@ async function iPlayerMain(number, index, page) {
         
         let times = new Date();
         let data = {
-            // 页面导航栏标题
-            title: "EXAMPLE",
-            // 当前页面数据是否支持播放
-            canPlay: true,
-            // 是否显示多任务按钮
-            mutableDuty: true,
-            // 列表数据
+            title: "EXAMPLE", // 页面导航栏标题
+            canPlay: true, // 当前页面数据是否支持播放
+            mutableDuty: true, // 是否显示多任务按钮
+            // 明文列表数据
             data: [{
                 name: "example", // 名称
                 plat: "m3u8", // 平台
@@ -49,6 +46,9 @@ async function iPlayerMain(number, index, page) {
                 // 是否跳转至下一页（如果address有效则忽略）
                 pushNext: false
             }]
+            // 密文列表数据
+            //sign: dynamicSignKey,        // 必须为 String: 解密密钥（通过app内设置->url-scheme生成）
+            //data: encryptedStringFromNet // 必须为 String: 密文载荷（由上述密钥加密的数据）
         }
         
         console.log(`numben(页面)：${number}; index(选择项)：${index}; page(页码)：${page}`);
@@ -96,37 +96,57 @@ function version() {
     return ''
 }
 
+/**
+ * 封装底层的网络请求为 Promise
+ * @param {string} method - 'get' 或 'post'
+ * @param {object} options - 请求配置
+ * @returns {Promise<any>}
+ */
+function requestAsync(method, options) {
+    return new Promise((resolve, reject) => {
+        iNetwork[method](options, function(err, res, body) {
+            if (err) {
+                reject(new Error(err));
+                return;
+            }
+            resolve({ res, body });
+        });
+    });
+}
+
+async function getData() {
+    let options = {
+        url: "http://example.php?key=value",
+        headers: {}, // 设置请求头
+        timeout: 16
+    };
+    
+    try {
+        let { res, body } = await requestAsync('get', options);
+        console.log("GET 请求成功:", body);
+    } catch (error) {
+        console.log("GET 请求失败:", error.message);
+    }
+}
+
+async function postData() {
+    let param = { key: 'value' };
+    let options = {
+        url: "http://example.php",
+        headers: {}, // 设置请求头
+        body: param, // POST 请求可以携带 body，底层会自动序列化为 JSON
+        timeout: 16
+    };
+    
+    try {
+        let { res, body } = await requestAsync('post', options);
+        console.log("POST 请求成功:", body);
+    } catch (error) {
+        console.log("POST 请求失败:", error.message);
+    }
+}
+
 /*
- 
- async function getData() {
-
-     let param = {key: 'value'}
-     let options = {
-         url : "http://example.php",
-         body : param, // 可选值
-         timeout : 16, // 可选值，默认16s
-         useJSON : false // (版本>=1.5.0已废弃)可选值，默认false。若设置为true，则将body转为json data
-     }
-     iNetwork.get(options, function(err, res, body){
-         //body：版本>=1.5.0是字符串，低版本为object
-         console.log(JSON.stringify(body))
-     })
- }
- 
- async function postData() {
-
-     let param = {key: 'value'}
-     let options = {
-         url : "http://example.php",
-         body : param, // 可选值
-         timeout : 16, // 可选值，默认16s
-         useJSON : false // 可选值，默认false。若设置为true，则将body转为json data
-     }
-     iNetwork.post(options, function(err, res, body){
-         // body：版本>=1.5.0是字符串，低版本为object
-         console.log(JSON.stringify(body))
-     })
- }
  // 本地推送
  iNotify.notify("Title", "subtitle", "detail", {"open-url": 'https://www.baidu.com', "media-url":'https://s3.bmp.ovh/imgs/2022/06/03/b00eeb1ee998105e.png'})
  
